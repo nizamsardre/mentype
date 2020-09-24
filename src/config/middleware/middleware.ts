@@ -5,6 +5,7 @@ import * as cors from 'cors';
 import * as express from 'express';
 import * as logger from 'morgan';
 import * as pino from "pino";
+//import * as pino-http from "pino-http";
 import * as loga from "express-pino-logger";
 import * as helmet from 'helmet';
 import config from '../env/index';
@@ -16,9 +17,7 @@ import { sendHttpErrorModule } from '../error/sendHttpError';
  * @param {express.Application} app
  */
 export function configure(app: express.Application): void {
-    const pinoLogger = pino({ prettyPrint: { 
-        colorize: true, translateTime: true
-    } });
+    const pinoLogger = pino({ prettyPrint: true});
     // express middleware
     app.use(bodyParser.urlencoded({
         extended: false
